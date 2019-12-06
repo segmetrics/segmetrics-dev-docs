@@ -6,6 +6,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>API Reference</title>
+    <link href="images/favicon-3b625b57.png" rel="icon" type="image/png" />
 
     <style>
       .highlight table td { padding: 5px; }
@@ -196,25 +197,22 @@
   color: #f92672;
 }
     </style>
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all.js"></script>
+    <link href="stylesheets/screen-1f44e80c.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-a6da9878.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-c5541673.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="images/navbar.png" alt="Navbar" />
+        <img src="images/navbar-cad8cdcb.png" alt="Navbar" />
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo.png" class="logo" alt="Logo" />
+      <img src="images/logo-733a55c3.png" class="logo" alt="Logo" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
+              <a href="#" data-language-name="shell">cURL</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -222,205 +220,158 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
-          </li>
-          <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-          </li>
-          <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting started">Getting started</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#overview" class="toc-h2 toc-link" data-title="Overview">Overview</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                    <a href="#authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#responses" class="toc-h2 toc-link" data-title="Responses">Responses</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#contacts" class="toc-h1 toc-link" data-title="Contacts">Contacts</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#add-or-update-contact" class="toc-h2 toc-link" data-title="Add or Update Contact">Add or Update Contact</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#tags" class="toc-h1 toc-link" data-title="Tags">Tags</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#add-tags-to-contact" class="toc-h2 toc-link" data-title="Add Tags to Contact">Add Tags to Contact</a>
+                  </li>
+                  <li>
+                    <a href="#remove-tags-to-contact" class="toc-h2 toc-link" data-title="Remove Tags to Contact">Remove Tags to Contact</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#orders" class="toc-h1 toc-link" data-title="Orders">Orders</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#add-purchase-to-contact" class="toc-h2 toc-link" data-title="Add Purchase to Contact">Add Purchase to Contact</a>
+                  </li>
+              </ul>
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='https://segmetrics.io'>Get Started at SegMetrics.io</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+        <h1 id='getting-started'>Getting started</h1><h2 id='overview'>Overview</h2>
+<p>Welcome to the SegMetrics API!</p>
 
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>The SegMetrics API v1 is a way to enable customer to import their own data into their SegMetrics account, either through a custom integration,
+or to modify existing information in their integrations.</p>
 
-<p>This example API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='authentication'>Authentication</h1>
+<p>Calls for the SegMetrics API v1 are relative to the url:
+<code>https://import.segmetrics.io/api/v1/&lt;account_id&gt;/&lt;integration_id/</code></p>
+
+<p>API v1 is in active development.</p>
+<h2 id='authentication'>Authentication</h2>
+<p>The SegMetrics API uses two pieces of information to authorize your account.</p>
+
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>Authorization</p>
 </blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://import.segmetrics.io/api/v1/&lt;account_id&gt;/&lt;integration_id/&lt;endpoint&gt;"</span> <span class="se">\ </span> 
+  -H <span class="s1">'Authorization: YOUR_API_KEY'</span>
+  -H <span class="s1">'Content-Type: application/json'</span>
 </code></pre>
+<ul>
+<li>Your <code>Account ID</code> is appended to the URL of each request that you&#39;ll make to the API</li>
+<li>Your <code>API Key</code> is sent as an authorization header on each request.</li>
+</ul>
+
+<p>You can find your <code>Account Id</code> and <code>API Key</code> in the <a href="https://app.segmetrics.io/a/account/edit">SegMetrics Account page</a>.</p>
+<h2 id='responses'>Responses</h2>
 <blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Successful Call</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
+<p>When an API call succeeds, the API will return a 200 HTTP response and a JSON response body unless otherwise noted.</p>
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
-</tr>
-</tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<p>If there&#39;s an error, the API will return an HTTP response in the 400 or 500 range and a response body indicating what caused the error.</p>
+<h3 id='bad-data'>Bad data</h3>
+<p>When you create or update a field, you may receive an HTTP 400 if any fields contain bad data or required fields are missing.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Missing Data</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"missing 'id' field "</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+</span></code></pre><h3 id='internal-server-errors'>Internal server errors</h3>
+<p>If the server is overloaded or you encounter a bug, you will get a 500 error. 
+Try again after a short period, and if you continue to encounter an error, please raise the issue with support.</p>
+<h1 id='contacts'>Contacts</h1><h2 id='add-or-update-contact'>Add or Update Contact</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://import.segmetrics.io/api/v1/&lt;account_id&gt;/&lt;integration_id&gt;/contact
+     -H <span class="s1">'Authorization: YOUR_API_KEY'</span>
+     -H <span class="s1">'Content-Type: application/json'</span>
+     -d <span class="s1">'{
+           "contact_id": 249,
+           "first_name": "Joey",
+           "last_name": "Bloggs",
+           "email": "joey@bloggs.com",
+           "date_created": "2018-10-02 16:15:00",
+           "last_updated": "2018-11-28 09:28:42",
+           "utm_source": "facebook",
+           "utm_content": "holiday special",
+           "utm_medium": "facebook",
+           "utm_campaign": "holiday",
+           "utm_term": "awesomeness",
+           "referring_url": "reallycoolurl.com",
+           "optin_url": "evencoolerurl.com",
+           "ip_address": "8.8.8.8",
+           "affiliate_id": "123",
+           "geo_lat": "45.523064",
+           "geo_lon": "-122.676483",
+           "tags": [
+             {
+               "id": 3,
+               "name": "New Lead",
+               "date": "2018-10-02 16:15:00"
+             },
+             {
+               "id": 45,
+               "name": "2018 Holiday Special",
+               "date": "2018-11-28 09:25:33"
+             },
+             {
+               "id": 8,
+               "name": "Platinum Customer",
+               "date": "2018-11-28 09:28:42"
+             }
+           ]
+         }'</span>
+</code></pre>
+<p>Adds a contact to the specified SegMetrics integration.</p>
+
+<aside class="notice">
+If the `contact_id` already exists, the existing contact will be updated.
+</aside>
+<h3 id='endpoint'>Endpoint</h3>
+<p><strong>POST</strong> <code>/v3/&lt;account_id&gt;/&lt;integration_id&gt;/contact</code></p>
+<h3 id='path-parameters'>Path parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -428,76 +379,441 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td><code>account_id</code></td>
+<td>Account API id available from your Account Settings Page</td>
+</tr>
+<tr>
+<td><code>integration_id</code></td>
+<td>This is the ID of the integration from your Account Settings Page</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
-
-<p>The Kittn API uses the following error codes:</p>
-
+<h3 id='request-body-schema'>Request Body Schema</h3>
+<p><code>application/json</code></p>
+<h3 id='required-parameters'>Required parameters</h3>
 <table><thead>
 <tr>
-<th>Error Code</th>
-<th>Meaning</th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
+<td><code>contact_id</code></td>
+<td>Contact Id</td>
 </tr>
 <tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
+<td><code>email</code></td>
+<td>Contact Email Address</td>
+</tr>
+</tbody></table>
+<h3 id='optional-parameters'>Optional parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>date_created</code></td>
+<td>Date Created</td>
 </tr>
 <tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td><code>first_name</code></td>
+<td>Contact First Name</td>
 </tr>
 <tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td><code>last_name</code></td>
+<td>Contact Last Name</td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+<td><code>tags</code></td>
+<td>List of TagIds or Array of Tag Objects</td>
 </tr>
 <tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+<td><code>last_updated</code></td>
+<td>Date Last Updated</td>
 </tr>
 <tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
+<td><code>utm_campaign</code></td>
+<td>UTM Campaign</td>
 </tr>
 <tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
+<td><code>utm_content</code></td>
+<td>UTM Content</td>
 </tr>
 <tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td><code>utm_medium</code></td>
+<td>UTM Medium</td>
 </tr>
 <tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+<td><code>utm_source</code></td>
+<td>UTM Source</td>
 </tr>
 <tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+<td><code>utm_term</code></td>
+<td>UTM Term</td>
+</tr>
+<tr>
+<td><code>referring_url</code></td>
+<td>Referring URL</td>
+</tr>
+<tr>
+<td><code>optin_url</code></td>
+<td>Optin URL</td>
+</tr>
+<tr>
+<td><code>ip_address</code></td>
+<td>IP Address</td>
+</tr>
+<tr>
+<td><code>affiliate_id</code></td>
+<td>Affiliate ID</td>
+</tr>
+<tr>
+<td><code>geo_lat</code></td>
+<td>Geographic Latitude</td>
+</tr>
+<tr>
+<td><code>geo_lon</code></td>
+<td>Geographic Longitude</td>
+</tr>
+</tbody></table>
+<h1 id='tags'>Tags</h1><h2 id='add-tags-to-contact'>Add Tags to Contact</h2>
+<blockquote>
+<p>Example request (Tag Ids)</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://import.segmetrics.io/api/v1/&lt;account_id&gt;/&lt;integration_id&gt;/tags/add <span class="se">\</span>
+     -H <span class="s1">'Authorization: YOUR_API_KEY'</span> <span class="se">\</span>
+     -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+     -d <span class="s1">'{
+           "contact_id": 249,
+           "tags": [ 3, 45, 8 ]
+         }'</span>
+</code></pre>
+<blockquote>
+<p>Example request (Tag Names)</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://import.segmetrics.io/api/v1/&lt;account_id&gt;/&lt;integration_id&gt;/tags/add <span class="se">\</span>
+     -H <span class="s1">'Authorization: YOUR_API_KEY'</span> <span class="se">\</span>
+     -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+     -d <span class="s1">'{
+           "contact_id": 249,
+           "tags": [
+               "New Lead",
+               "2018 Holiday Special",
+               "Platinum Customer"
+           ]
+         }'</span>
+</code></pre>
+<blockquote>
+<p>Example request (Tag Objects)</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://import.segmetrics.io/api/v1/&lt;account_id&gt;/&lt;integration_id&gt;/tags/add <span class="se">\</span>
+     -H <span class="s1">'Authorization: YOUR_API_KEY'</span> <span class="se">\</span>
+     -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+     -d <span class="s1">'{
+           "contact_id": 249,
+           "tags": [
+             {
+               "id": 3,
+               "name": "New Lead",
+               "date": "2018-10-02 16:15:00"
+             },
+             {
+               "id": 45,
+               "name": "2018 Holiday Special",
+               "date": "2018-11-28 09:25:33"
+             }
+           ]
+         }'</span>
+</code></pre>
+<p>Tags can be submitted in three different ways depending on how they&#39;re available in your application. Examples are shown to the right.</p>
+<h3 id='endpoint'>Endpoint</h3>
+<p><strong>POST</strong> <code>/v3/&lt;account_id&gt;/&lt;integration_id&gt;/tags/add</code></p>
+<h3 id='path-parameters'>Path parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>account_id</code></td>
+<td>Account API id available from your Account Settings Page</td>
+</tr>
+<tr>
+<td><code>integration_id</code></td>
+<td>This is the ID of the integration from your Account Settings Page</td>
+</tr>
+</tbody></table>
+<h3 id='request-body-schema'>Request Body Schema</h3>
+<p><code>application/json</code></p>
+<h3 id='required-parameters'>Required parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>contact_id</code></td>
+<td>Contact Id</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td>Array of Tags.</td>
+</tr>
+</tbody></table>
+<h3 id='tag-format'>Tag Format</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Tag Id</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Tag Name</td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td>DateTime the Tag was applied (defaults to now)</td>
+</tr>
+</tbody></table>
+<h2 id='remove-tags-to-contact'>Remove Tags to Contact</h2>
+<blockquote>
+<p>Example request (Tag Ids)</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://import.segmetrics.io/api/v1/&lt;account_id&gt;/&lt;integration_id&gt;/tags/remove <span class="se">\</span>
+     -H <span class="s1">'Authorization: YOUR_API_KEY'</span> <span class="se">\</span>
+     -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+     -d <span class="s1">'{
+           "contact_id": 249,
+           "tags": [ 3, 45, 8 ]
+         }'</span>
+</code></pre>
+<blockquote>
+<p>Example request (Tag Names)</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://import.segmetrics.io/api/v1/&lt;account_id&gt;/&lt;integration_id&gt;/tags/remove <span class="se">\</span>
+     -H <span class="s1">'Authorization: YOUR_API_KEY'</span> <span class="se">\</span>
+     -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+     -d <span class="s1">'{
+           "contact_id": 249,
+           "tags": [
+               "New Lead",
+               "2018 Holiday Special",
+               "Platinum Customer"
+           ]
+         }'</span>
+</code></pre>
+<blockquote>
+<p>Example request (Tag Objects)</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://import.segmetrics.io/api/v1/&lt;account_id&gt;/&lt;integration_id&gt;/tags/remove <span class="se">\</span>
+     -H <span class="s1">'Authorization: YOUR_API_KEY'</span> <span class="se">\</span>
+     -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+     -d <span class="s1">'{
+           "contact_id": 249,
+           "tags": [
+             {
+               "id": 3,
+               "name": "New Lead"
+             },
+             {
+               "id": 45,
+               "name": "2018 Holiday Special"
+             }
+           ]
+         }'</span>
+</code></pre>
+<p>Tags can be submitted in three different ways depending on how they&#39;re available in your application. Examples are shown to the right.</p>
+<h3 id='endpoint-2'>Endpoint</h3>
+<p><strong>POST</strong> <code>/v3/&lt;account_id&gt;/&lt;integration_id&gt;/tags/remove</code></p>
+<h3 id='path-parameters-2'>Path parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>account_id</code></td>
+<td>Account API id available from your Account Settings Page</td>
+</tr>
+<tr>
+<td><code>integration_id</code></td>
+<td>This is the ID of the integration from your Account Settings Page</td>
+</tr>
+</tbody></table>
+<h3 id='request-body-schema-2'>Request Body Schema</h3>
+<p><code>application/json</code></p>
+<h3 id='required-parameters-2'>Required parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>contact_id</code></td>
+<td>Contact Id</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td>Array of Tags.</td>
+</tr>
+</tbody></table>
+<h3 id='tag-format-2'>Tag Format</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Tag Id</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Tag Name</td>
+</tr>
+</tbody></table>
+<h1 id='orders'>Orders</h1><h2 id='add-purchase-to-contact'>Add Purchase to Contact</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://import.segmetrics.io/api/v1/&lt;account_id&gt;/&lt;integration_id&gt;/invoice
+     -H <span class="s1">'Authorization: YOUR_API_KEY'</span>
+     -H <span class="s1">'Content-Type: application/json'</span>
+     -d <span class="s1">'{
+           "contact_id": 4,
+           "id": 234115,
+           "amount": 4500,
+           "paid": 4500,
+           "is_refunded": 0,
+           "date_created": "2018-10-03 11:14:32",
+           "items": [
+             {
+               "name": "Round Tuit",
+               "product_id": 1556402307145,
+               "amount": 4000,
+               "total_paid": 4000
+             },
+             {
+               "name": "Uber Trinket",
+               "product_id": 82638,
+               "amount": 500,
+               "total_paid": 500
+             }
+           ]
+         }'</span>
+</code></pre>
+<p>Adds a purchase to the specified SegMetrics integration.</p>
+
+<aside class="notice">
+If the `id` already exists, the existing invoice will be updated.
+</aside>
+<h3 id='endpoint'>Endpoint</h3>
+<p><strong>POST</strong> <code>/v3/&lt;account_id&gt;/&lt;integration_id&gt;/contact</code></p>
+<h3 id='path-parameters'>Path parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>account_id</code></td>
+<td>Account API id available from your Account Settings Page</td>
+</tr>
+<tr>
+<td><code>integration_id</code></td>
+<td>This is the ID of the integration from your Account Settings Page</td>
+</tr>
+</tbody></table>
+<h3 id='request-body-schema'>Request Body Schema</h3>
+<p><code>application/json</code></p>
+<h3 id='required-parameters'>Required parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Invoice Id</td>
+</tr>
+<tr>
+<td><code>contact_id</code></td>
+<td>Contact Id (Required if no contact email)</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>Contact&#39;s Email (Required if no contact id)</td>
+</tr>
+<tr>
+<td><code>amount</code></td>
+<td>Invoice Total in Cents</td>
+</tr>
+<tr>
+<td><code>paid</code></td>
+<td>Invoice Amount Paid in Cents</td>
+</tr>
+<tr>
+<td><code>date_created</code></td>
+<td>Invoice Date</td>
+</tr>
+<tr>
+<td><code>items</code></td>
+<td>Array of Invoice Items</td>
+</tr>
+</tbody></table>
+<h3 id='optional-parameters'>Optional parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>is_refunded</code></td>
+<td>Invoice Refunded Flag</td>
+</tr>
+</tbody></table>
+<h3 id='item-parameters'>Item Parameters</h3>
+<p>For each invoice, include the line items of which products were included.
+If the product does not exist in SegMetrics, one will be created.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code></td>
+<td>Product Name</td>
+</tr>
+<tr>
+<td><code>product_id</code></td>
+<td>Product Id</td>
+</tr>
+<tr>
+<td><code>amount</code></td>
+<td>Product Price in Cents</td>
 </tr>
 </tbody></table>
 
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
+                <a href="#" data-language-name="shell">cURL</a>
           </div>
       </div>
     </div>

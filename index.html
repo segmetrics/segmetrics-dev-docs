@@ -197,7 +197,7 @@
   color: #f92672;
 }
     </style>
-    <link href="stylesheets/screen-1f44e80c.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-66ae91f5.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-a6da9878.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-c5541673.js"></script>
   </head>
@@ -398,13 +398,18 @@ If the `contact_id` already exists, the existing contact will be updated.
 </thead><tbody>
 <tr>
 <td><code>contact_id</code></td>
-<td>Contact Id</td>
+<td>Contact Id (Required if no contact email)</td>
 </tr>
 <tr>
 <td><code>email</code></td>
-<td>Contact Email Address</td>
+<td>Contact Email Address (Required if no contact_id)</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+When looking for a contact to update, the API gives priority to the contact_id over email.<br/>
+When passing a contact_id, if the email address already exists, that contact_id will be updated with the new id. 
+</aside>
 <h3 id='optional-parameters'>Optional parameters</h3>
 <table><thead>
 <tr>

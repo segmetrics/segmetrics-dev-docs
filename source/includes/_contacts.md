@@ -72,8 +72,13 @@ Parameter | Description
 
 Parameter | Description
 ------------- | -------------
-`contact_id` | Contact Id
-`email` | Contact Email Address
+`contact_id` | Contact Id (Required if no contact email)
+`email` | Contact Email Address (Required if no contact_id)
+
+<aside class="notice">
+When looking for a contact to update, the API gives priority to the contact_id over email.<br/>
+When passing a contact_id, if the email address already exists, that contact_id will be updated with the new id. 
+</aside>
 
 
 ### Optional parameters

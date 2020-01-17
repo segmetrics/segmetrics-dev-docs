@@ -15,6 +15,7 @@ curl -X POST https://import.segmetrics.io/api/v1/<account_id>/<integration_id>/c
            "first_name": "Joey",
            "last_name": "Bloggs",
            "email": "joey@bloggs.com",
+           "status": 'active',
            "date_created": "2018-10-02 16:15:00",
            "last_updated": "2018-11-28 09:28:42",
            "utm_source": "facebook",
@@ -88,6 +89,7 @@ Parameter | Description
 `date_created` | Date Created
 `first_name` | Contact First Name
 `last_name` | Contact Last Name
+`status` | Optin status of the contact. `active` or `inactive` (defaults to `active`)
 `tags` | List of TagIds or Array of Tag Objects
 `last_updated` | Date Last Updated
 `utm_campaign` | UTM Campaign

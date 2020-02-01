@@ -75,7 +75,8 @@ Parameter | Description
 
 Parameter | Description
 ------------- | -------------
-`contact_id` | Contact Id
+`contact_id` | Contact Id (Required if no contact email)
+`email` | Contact Email Address (Required if no contact_id)
 `tags` | Array of Tags.
 
 
@@ -159,7 +160,8 @@ Parameter | Description
 
 Parameter | Description
 ------------- | -------------
-`contact_id` | Contact Id
+`contact_id` | Contact Id (Required if no contact email)
+`email` | Contact Email Address (Required if no contact_id)
 `tags` | Array of Tags.
 
 

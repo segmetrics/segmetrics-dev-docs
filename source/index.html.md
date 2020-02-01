@@ -12,6 +12,7 @@ includes:
   - contacts
   - tags
   - orders
+  - ads
 #  - subscriptions
 #  - events
 #  - integrations

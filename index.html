@@ -260,6 +260,14 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#ads" class="toc-h1 toc-link" data-title="Ads">Ads</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#record-ad-performance" class="toc-h2 toc-link" data-title="Record Ad Performance">Record Ad Performance</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='https://segmetrics.io'>Get Started at SegMetrics.io</a></li>
@@ -332,6 +340,7 @@ Try again after a short period, and if you continue to encounter an error, pleas
            "first_name": "Joey",
            "last_name": "Bloggs",
            "email": "joey@bloggs.com",
+           "status": '</span>active<span class="s1">',
            "date_created": "2018-10-02 16:15:00",
            "last_updated": "2018-11-28 09:28:42",
            "utm_source": "facebook",
@@ -428,6 +437,10 @@ When passing a contact_id, if the email address already exists, that contact_id 
 <tr>
 <td><code>last_name</code></td>
 <td>Contact Last Name</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td>Optin status of the contact. <code>active</code> or <code>inactive</code> (defaults to <code>active</code>)</td>
 </tr>
 <tr>
 <td><code>tags</code></td>
@@ -561,7 +574,11 @@ When passing a contact_id, if the email address already exists, that contact_id 
 </thead><tbody>
 <tr>
 <td><code>contact_id</code></td>
-<td>Contact Id</td>
+<td>Contact Id (Required if no contact email)</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>Contact Email Address (Required if no contact_id)</td>
 </tr>
 <tr>
 <td><code>tags</code></td>
@@ -665,7 +682,11 @@ When passing a contact_id, if the email address already exists, that contact_id 
 </thead><tbody>
 <tr>
 <td><code>contact_id</code></td>
-<td>Contact Id</td>
+<td>Contact Id (Required if no contact email)</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>Contact Email Address (Required if no contact_id)</td>
 </tr>
 <tr>
 <td><code>tags</code></td>
@@ -812,6 +833,175 @@ If the product does not exist in SegMetrics, one will be created.</p>
 <tr>
 <td><code>amount</code></td>
 <td>Product Price in Cents</td>
+</tr>
+</tbody></table>
+<h1 id='ads'>Ads</h1><h2 id='record-ad-performance'>Record Ad Performance</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://import.segmetrics.io/api/v1/&lt;account_id&gt;/&lt;integration_id&gt;/ad/performance
+     -H <span class="s1">'Authorization: YOUR_API_KEY'</span>
+     -H <span class="s1">'Content-Type: application/json'</span>
+     -d <span class="s1">'{
+           "ad": 5489788855,
+           "adcampaign": {             
+              "id": 123456789,
+              "name": "My Amazing Ad Campaign",
+           },
+           "adset": {             
+              "id": 5678910,
+              "name": "My Amazing Ad Set",
+              "adcampaign": 123456789,
+           },           
+           "spend": 4500,
+           "clicks": 7844,
+           "impressions": 15487,
+           "date": "2018-10-03",           
+         }'</span>
+</code></pre>
+<p>Adds the add performance for a specific day to SegMetrics.</p>
+
+<p>The AdPerformance endpoint allows passing the Ad Set and Ad Campaign values
+in addition to the performance to allow users to skip campaign creation API calls
+in order to simplify performance. </p>
+
+<aside class="notice">
+If the `ad` and `date_created` already exists, the existing ad performance will be updated.
+</aside>
+<h3 id='endpoint'>Endpoint</h3>
+<p><strong>POST</strong> <code>/v3/&lt;account_id&gt;/&lt;integration_id&gt;/ad/performance</code></p>
+<h3 id='path-parameters'>Path parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>account_id</code></td>
+<td>Account API id available from your Account Settings Page</td>
+</tr>
+<tr>
+<td><code>integration_id</code></td>
+<td>This is the ID of the integration from your Account Settings Page</td>
+</tr>
+</tbody></table>
+<h3 id='request-body-schema'>Request Body Schema</h3>
+<p><code>application/json</code></p>
+<h3 id='required-parameters'>Required parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>ad</code></td>
+<td>The Id of the Ad. Alternately, an <code>ad</code> object may be passed (see below)</td>
+</tr>
+<tr>
+<td><code>spend</code></td>
+<td>Amount spent on the ad for this day in Cents</td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td>Date that the clicks, spend and impressions apply to</td>
+</tr>
+</tbody></table>
+<h3 id='optional-parameters'>Optional parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>adcampaign</code></td>
+<td>The <code>adcampaign</code> object that the ad belongs to (see below)</td>
+</tr>
+<tr>
+<td><code>adset</code></td>
+<td>The <code>adset</code> object that the ad belongs to (see below)</td>
+</tr>
+<tr>
+<td><code>clicks</code></td>
+<td>Number of clicks on the ad for this day</td>
+</tr>
+<tr>
+<td><code>impressions</code></td>
+<td>Number of impressions on the ad for this day</td>
+</tr>
+</tbody></table>
+<h3 id='ad-object-required-parameters'>Ad Object Required Parameters</h3>
+<p><code>ad</code> may be passed as either an existing ID or an object.
+ If an object is passed, then the <code>ad</code> will be created in SegMetrics, similar to if the <strong>Create Ad</strong> 
+ endpoint was being called, with the following values:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Id of the Ad</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Name of the Ad</td>
+</tr>
+<tr>
+<td><code>adcampaign</code></td>
+<td>Ad Campaign Id of the Ad</td>
+</tr>
+<tr>
+<td><code>adset</code></td>
+<td>Ad Set Id of the Ad</td>
+</tr>
+</tbody></table>
+<h3 id='adset-object-required-parameters'>AdSet Object Required Parameters</h3>
+<p><code>adset</code> may be passed as either an existing ID or an object.
+ If an object is passed, then the <code>AdSet</code> will be created in SegMetrics, similar to if the <strong>Create AdSet</strong> 
+ endpoint was being called, with the following values:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Id of the AdSet</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Name of the AdSet</td>
+</tr>
+<tr>
+<td><code>adcampaign</code></td>
+<td>Ad Campaign Id of the AdSet</td>
+</tr>
+</tbody></table>
+<h3 id='adcampaign-object-required-parameters'>AdCampaign Object Required Parameters</h3>
+<p><code>adcampaign</code> may be passed as either an existing ID or an object.
+ If an object is passed, then the <code>Campaign</code> will be created in SegMetrics, similar to if the <strong>Create AdCampaign</strong> 
+ endpoint was being called, with the following values:</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Id of the Ad Campaign</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Name of the Ad Campaign</td>
 </tr>
 </tbody></table>
 

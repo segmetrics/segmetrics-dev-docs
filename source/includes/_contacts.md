@@ -45,7 +45,11 @@ curl -X POST https://import.segmetrics.io/api/v1/<account_id>/<integration_id>/c
                "name": "Platinum Customer",
                "date": "2018-11-28 09:28:42"
              }
-           ]
+           ],
+           "custom_fields": {
+                "shirt_size": "Medium",
+                "Awesome Sauce": "Applesauce2"
+           }
          }'
 ```
 
@@ -91,6 +95,7 @@ Parameter | Description
 `last_name` | Contact Last Name
 `status` | Optin status of the contact. `active` or `inactive` (defaults to `active`)
 `tags` | List of TagIds or Array of Tag Objects
+`custom_fields` | Object containing custom field data. E.g. `{ "shirt_size": "Medium" }`.
 `last_updated` | Date Last Updated
 `utm_campaign` | UTM Campaign
 `utm_content` | UTM Content
@@ -103,3 +108,8 @@ Parameter | Description
 `affiliate_id` | Affiliate ID
 `geo_lat` | Geographic Latitude
 `geo_lon` | Geographic Longitude
+
+<aside class="notice">
+When updating `custom_fields`, data will be **appended** to the existing data.<br/>
+When updating `tags`, data will *replace* the existing data. Use `tags/add` to add tags to a contact. 
+</aside>

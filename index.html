@@ -370,7 +370,11 @@ Try again after a short period, and if you continue to encounter an error, pleas
                "name": "Platinum Customer",
                "date": "2018-11-28 09:28:42"
              }
-           ]
+           ],
+           "custom_fields": {
+                "shirt_size": "Medium",
+                "Awesome Sauce": "Applesauce2"
+           }
          }'</span>
 </code></pre>
 <p>Adds a contact to the specified SegMetrics integration.</p>
@@ -447,6 +451,10 @@ When passing a contact_id, if the email address already exists, that contact_id 
 <td>List of TagIds or Array of Tag Objects</td>
 </tr>
 <tr>
+<td><code>custom_fields</code></td>
+<td>Object containing custom field data. E.g. <code>{ &quot;shirt_size&quot;: &quot;Medium&quot; }</code>.</td>
+</tr>
+<tr>
 <td><code>last_updated</code></td>
 <td>Date Last Updated</td>
 </tr>
@@ -495,6 +503,11 @@ When passing a contact_id, if the email address already exists, that contact_id 
 <td>Geographic Longitude</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+When updating `custom_fields`, data will be **appended** to the existing data.<br/>
+When updating `tags`, data will *replace* the existing data. Use `tags/add` to add tags to a contact. 
+</aside>
 <h1 id='tags'>Tags</h1><h2 id='add-tags-to-contact'>Add Tags to Contact</h2>
 <blockquote>
 <p>Example request (Tag Ids)</p>

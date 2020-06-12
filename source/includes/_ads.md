@@ -40,7 +40,7 @@ If the `ad` and `date_created` already exists, the existing ad performance will 
 
 ### Endpoint
 
-**POST** `/v3/<account_id>/<integration_id>/ad/performance`
+**POST** `/v1/<account_id>/<integration_id>/ad/performance`
 
 ### Path parameters
 

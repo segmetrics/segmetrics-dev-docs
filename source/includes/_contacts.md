@@ -61,7 +61,7 @@ If the `contact_id` already exists, the existing contact will be updated.
 
 ### Endpoint
 
-**POST** `/v3/<account_id>/<integration_id>/contact`
+**POST** `/v1/<account_id>/<integration_id>/contact`
 
 ### Path parameters
 

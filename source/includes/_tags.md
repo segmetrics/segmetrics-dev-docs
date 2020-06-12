@@ -59,7 +59,7 @@ Tags can be submitted in three different ways depending on how they're available
 
 ### Endpoint
 
-**POST** `/v3/<account_id>/<integration_id>/tags/add`
+**POST** `/v1/<account_id>/<integration_id>/tags/add`
 
 ### Path parameters
 
@@ -144,7 +144,7 @@ Tags can be submitted in three different ways depending on how they're available
 
 ### Endpoint
 
-**POST** `/v3/<account_id>/<integration_id>/tags/remove`
+**POST** `/v1/<account_id>/<integration_id>/tags/remove`
 
 ### Path parameters
 

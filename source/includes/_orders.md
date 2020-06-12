@@ -42,7 +42,7 @@ If the `id` already exists, the existing invoice will be updated.
 
 ### Endpoint
 
-**POST** `/v3/<account_id>/<integration_id>/contact`
+**POST** `/v1/<account_id>/<integration_id>/invoice`
 
 ### Path parameters
 

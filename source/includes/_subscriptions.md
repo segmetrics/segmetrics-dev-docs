@@ -29,7 +29,7 @@ Adding a subscription **does not** create a corresponding order. That must be do
 
 ### Endpoint
 
-**POST** `/v3/<account_id>/<integration_id>/subscription`
+**POST** `/v1/<account_id>/<integration_id>/subscription`
 
 ### Path parameters
 

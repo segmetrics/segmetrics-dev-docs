@@ -151,6 +151,24 @@ html, body {
     transition-duration: 200ms;
   }
 
+
+  // remove the TOC section headers from the content
+  #rest-section,
+  #js-section {
+    display: none;
+  }// This is the section header
+
+  .toc-section{
+    text-transform: uppercase;
+    margin: 15px 15px 5px 15px;
+    padding-left: 0;
+    padding-bottom: 0;
+    border-bottom: 1px solid #fbc42e;
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+  }
+
   // This is the currently selected ToC entry
   .toc-link.active {
     background-color: $nav-active-bg;

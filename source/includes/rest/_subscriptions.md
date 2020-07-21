@@ -59,7 +59,7 @@ Parameter | Description
 
 Parameter | Description
 ------------- | -------------
-`quantity` | The quantity of the plan to which the customer is subscribed. Defaults to 0
+`quantity` | The quantity of the plan to which the customer is subscribed. Defaults to 1
 `trial_end_date` | If the subscription has a trial, the end of that trial.
 `end_date` | A date in the future at which the subscription will automatically get canceled
 `canceled_date` | If the subscription has been canceled, the date of that cancellation.

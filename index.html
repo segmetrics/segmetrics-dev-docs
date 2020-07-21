@@ -272,18 +272,18 @@
                 </ul>
           </li>
           <li>
-              <a href="#ads" class="toc-h1 toc-link" data-title="Ads">Ads</a>
-                <ul class="toc-list-h2">
-                    <li>
-                      <a href="#record-ad-performance" class="toc-h2 toc-link" data-title="Record Ad Performance">Record Ad Performance</a>
-                    </li>
-                </ul>
-          </li>
-          <li>
               <a href="#subscriptions" class="toc-h1 toc-link" data-title="Subscriptions">Subscriptions</a>
                 <ul class="toc-list-h2">
                     <li>
                       <a href="#add-subscription" class="toc-h2 toc-link" data-title="Add Subscription">Add Subscription</a>
+                    </li>
+                </ul>
+          </li>
+          <li>
+              <a href="#ads" class="toc-h1 toc-link" data-title="Ads">Ads</a>
+                <ul class="toc-list-h2">
+                    <li>
+                      <a href="#record-ad-performance" class="toc-h2 toc-link" data-title="Record Ad Performance">Record Ad Performance</a>
                     </li>
                 </ul>
           </li>
@@ -889,6 +889,116 @@ If the product does not exist in SegMetrics, one will be created.</p>
 <td>Product Price in Cents</td>
 </tr>
 </tbody></table>
+<h1 id='subscriptions'>Subscriptions</h1><h2 id='add-subscription'>Add Subscription</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://import.segmetrics.io/api/v1/&lt;account_id&gt;/&lt;integration_id&gt;/subscription
+     -H <span class="s1">'Authorization: YOUR_API_KEY'</span>
+     -H <span class="s1">'Content-Type: application/json'</span>
+     -d <span class="s1">'{
+           "email": "mwiegand@gmail.com",
+           "id": 234115,
+           "amount": 4500,
+           "product_id": 108,
+           "start_date": "2019-12-03 11:14:32",
+           "last_bill_date": "2019-12-03 11:14:32",
+           "billing_cycle": "month",
+           "frequency": 1
+         }'</span>
+</code></pre>
+<p>Adds a subscription to the existing contact. If the subscription id already exist, it will be updated.
+<aside class="warning">
+Adding a subscription <strong>does not</strong> create a corresponding order. That must be done separately.
+</aside></p>
+<h3 id='endpoint'>Endpoint</h3>
+<p><strong>POST</strong> <code>/v1/&lt;account_id&gt;/&lt;integration_id&gt;/subscription</code></p>
+<h3 id='path-parameters'>Path parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>account_id</code></td>
+<td>Account API id available from your Account Settings Page</td>
+</tr>
+<tr>
+<td><code>integration_id</code></td>
+<td>This is the ID of the integration from your Account Settings Page</td>
+</tr>
+</tbody></table>
+<h3 id='request-body-schema'>Request Body Schema</h3>
+<p><code>application/json</code></p>
+<h3 id='required-parameters'>Required parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Subscription Id</td>
+</tr>
+<tr>
+<td><code>contact_id</code></td>
+<td>Contact Id (Required if no contact email)</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>Contact&#39;s Email (Required if no contact id)</td>
+</tr>
+<tr>
+<td><code>amount</code></td>
+<td>Subscription Total in Cents</td>
+</tr>
+<tr>
+<td><code>product_id</code></td>
+<td>Product Id that the Subscription applies to</td>
+</tr>
+<tr>
+<td><code>start_date</code></td>
+<td>DateTime that the Subscription started</td>
+</tr>
+<tr>
+<td><code>last_bill_date</code></td>
+<td>DateTime that the Subscription was last billed</td>
+</tr>
+<tr>
+<td><code>billing_cycle</code></td>
+<td>One of <code>year</code>, <code>month</code>, <code>week</code> or <code>day</code> The frequency with which a subscription should be billed.</td>
+</tr>
+<tr>
+<td><code>frequency</code></td>
+<td>The number of intervals (specified in the <code>billing_cycle</code> property) between subscription billings. For example, <code>billing_cycle=month</code> and <code>frequency=3</code> bills every 3 months.</td>
+</tr>
+</tbody></table>
+<h3 id='optional-parameters'>Optional parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>quantity</code></td>
+<td>The quantity of the plan to which the customer is subscribed. Defaults to 1</td>
+</tr>
+<tr>
+<td><code>trial_end_date</code></td>
+<td>If the subscription has a trial, the end of that trial.</td>
+</tr>
+<tr>
+<td><code>end_date</code></td>
+<td>A date in the future at which the subscription will automatically get canceled</td>
+</tr>
+<tr>
+<td><code>canceled_date</code></td>
+<td>If the subscription has been canceled, the date of that cancellation.</td>
+</tr>
+</tbody></table>
 <h1 id='ads'>Ads</h1><h2 id='record-ad-performance'>Record Ad Performance</h2>
 <blockquote>
 <p>Example request</p>
@@ -1056,116 +1166,6 @@ If the `ad` and `date_created` already exists, the existing ad performance will 
 <tr>
 <td><code>name</code></td>
 <td>Name of the Ad Campaign</td>
-</tr>
-</tbody></table>
-<h1 id='subscriptions'>Subscriptions</h1><h2 id='add-subscription'>Add Subscription</h2>
-<blockquote>
-<p>Example request</p>
-</blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X POST https://import.segmetrics.io/api/v1/&lt;account_id&gt;/&lt;integration_id&gt;/subscription
-     -H <span class="s1">'Authorization: YOUR_API_KEY'</span>
-     -H <span class="s1">'Content-Type: application/json'</span>
-     -d <span class="s1">'{
-           "email": "mwiegand@gmail.com",
-           "id": 234115,
-           "amount": 4500,
-           "product_id": 108,
-           "start_date": "2019-12-03 11:14:32",
-           "last_bill_date": "2019-12-03 11:14:32",
-           "billing_cycle": "month",
-           "frequency": 1
-         }'</span>
-</code></pre>
-<p>Adds a subscription to the existing contact. If the subscription id already exist, it will be updated.
-<aside class="warning">
-Adding a subscription <strong>does not</strong> create a corresponding order. That must be done separately.
-</aside></p>
-<h3 id='endpoint'>Endpoint</h3>
-<p><strong>POST</strong> <code>/v1/&lt;account_id&gt;/&lt;integration_id&gt;/subscription</code></p>
-<h3 id='path-parameters'>Path parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>account_id</code></td>
-<td>Account API id available from your Account Settings Page</td>
-</tr>
-<tr>
-<td><code>integration_id</code></td>
-<td>This is the ID of the integration from your Account Settings Page</td>
-</tr>
-</tbody></table>
-<h3 id='request-body-schema'>Request Body Schema</h3>
-<p><code>application/json</code></p>
-<h3 id='required-parameters'>Required parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td>Subscription Id</td>
-</tr>
-<tr>
-<td><code>contact_id</code></td>
-<td>Contact Id (Required if no contact email)</td>
-</tr>
-<tr>
-<td><code>email</code></td>
-<td>Contact&#39;s Email (Required if no contact id)</td>
-</tr>
-<tr>
-<td><code>amount</code></td>
-<td>Subscription Total in Cents</td>
-</tr>
-<tr>
-<td><code>product_id</code></td>
-<td>Product Id that the Subscription applies to</td>
-</tr>
-<tr>
-<td><code>start_date</code></td>
-<td>DateTime that the Subscription started</td>
-</tr>
-<tr>
-<td><code>last_bill_date</code></td>
-<td>DateTime that the Subscription was last billed</td>
-</tr>
-<tr>
-<td><code>billing_cycle</code></td>
-<td>One of <code>year</code>, <code>month</code>, <code>week</code> or <code>day</code> The frequency with which a subscription should be billed.</td>
-</tr>
-<tr>
-<td><code>frequency</code></td>
-<td>The number of intervals (specified in the <code>billing_cycle</code> property) between subscription billings. For example, <code>billing_cycle=month</code> and <code>frequency=3</code> bills every 3 months.</td>
-</tr>
-</tbody></table>
-<h3 id='optional-parameters'>Optional parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>quantity</code></td>
-<td>The quantity of the plan to which the customer is subscribed. Defaults to 1</td>
-</tr>
-<tr>
-<td><code>trial_end_date</code></td>
-<td>If the subscription has a trial, the end of that trial.</td>
-</tr>
-<tr>
-<td><code>end_date</code></td>
-<td>A date in the future at which the subscription will automatically get canceled</td>
-</tr>
-<tr>
-<td><code>canceled_date</code></td>
-<td>If the subscription has been canceled, the date of that cancellation.</td>
 </tr>
 </tbody></table>
 <h1 id='js-section'>JS Section</h1><h1 id="js_getting_started">Getting Started</h1>

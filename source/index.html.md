@@ -12,8 +12,8 @@ includes_rest_api:
   - rest/contacts
   - rest/tags
   - rest/orders
-  - rest/ads
   - rest/subscriptions
+  - rest/ads
 #  - rest/events
 #  - rest/integrations
 #  - rest/errors

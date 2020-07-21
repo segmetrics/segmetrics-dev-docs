@@ -13,7 +13,7 @@ includes_rest_api:
   - rest/tags
   - rest/orders
   - rest/ads
-#  - rest/subscriptions
+  - rest/subscriptions
 #  - rest/events
 #  - rest/integrations
 #  - rest/errors

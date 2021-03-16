@@ -250,6 +250,9 @@
                     <li>
                       <a href="#add-or-update-contact" class="toc-h2 toc-link" data-title="Add or Update Contact">Add or Update Contact</a>
                     </li>
+                    <li>
+                      <a href="#delete-contact" class="toc-h2 toc-link" data-title="Delete Contact">Delete Contact</a>
+                    </li>
                 </ul>
           </li>
           <li>
@@ -269,6 +272,9 @@
                     <li>
                       <a href="#add-purchase-to-contact" class="toc-h2 toc-link" data-title="Add Purchase to Contact">Add Purchase to Contact</a>
                     </li>
+                    <li>
+                      <a href="#delete-invoice" class="toc-h2 toc-link" data-title="Delete Invoice">Delete Invoice</a>
+                    </li>
                 </ul>
           </li>
           <li>
@@ -276,6 +282,9 @@
                 <ul class="toc-list-h2">
                     <li>
                       <a href="#add-subscription" class="toc-h2 toc-link" data-title="Add Subscription">Add Subscription</a>
+                    </li>
+                    <li>
+                      <a href="#delete-subscription" class="toc-h2 toc-link" data-title="Delete Subscription">Delete Subscription</a>
                     </li>
                 </ul>
           </li>
@@ -548,6 +557,51 @@ When passing a contact_id, if the email address already exists, that contact_id 
 <aside class="notice">
 When updating `custom_fields`, data will be **appended** to the existing data.<br/>
 When updating `tags`, data will *replace* the existing data. Use `tags/add` to add tags to a contact. 
+</aside>
+<h2 id='delete-contact'>Delete Contact</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X DELETE https://import.segmetrics.io/api/v1/&lt;account_id&gt;/&lt;integration_id&gt;/contact/&lt;contact_id_or_email&gt;
+     -H <span class="s1">'Authorization: YOUR_API_KEY'</span>
+</code></pre>
+<blockquote>
+<p>Successful Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTACT_ID"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"contact"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Permanently deletes a contact from SegMetrics. This cannot be undone.<br/> 
+This will not delete any invoices or purchases from the contact in the same integration.</p>
+<h3 id='endpoint-2'>Endpoint</h3>
+<p><strong>DELETE</strong> <code>/v1/&lt;account_id&gt;/&lt;integration_id&gt;/contact/&lt;contact_id_or_email&gt;</code></p>
+<h3 id='path-parameters-2'>Path parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>account_id</code></td>
+<td>Account API id available from your Account Settings Page</td>
+</tr>
+<tr>
+<td><code>integration_id</code></td>
+<td>This is the ID of the integration from your Account Settings Page</td>
+</tr>
+<tr>
+<td><code>contact_id_or_email</code></td>
+<td>Contact Id or Email Address of the contact to delete.</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+If the delete contact request is made with an email address all contacts in the integration that use the same email address will be deleted.
 </aside>
 <h1 id='tags'>Tags</h1><h2 id='add-tags-to-contact'>Add Tags to Contact</h2>
 <blockquote>
@@ -889,6 +943,46 @@ If the product does not exist in SegMetrics, one will be created.</p>
 <td>Product Price in Cents</td>
 </tr>
 </tbody></table>
+<h2 id='delete-invoice'>Delete Invoice</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X DELETE https://import.segmetrics.io/api/v1/&lt;account_id&gt;/&lt;integration_id&gt;/invoice/&lt;id&gt;
+     -H <span class="s1">'Authorization: YOUR_API_KEY'</span>
+</code></pre>
+<blockquote>
+<p>Successful Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INVOICE_ID"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invoice"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Permanently deletes an invoice from SegMetrics. This cannot be undone.</p>
+<h3 id='endpoint-2'>Endpoint</h3>
+<p><strong>DELETE</strong> <code>/v1/&lt;account_id&gt;/&lt;integration_id&gt;/invoice/&lt;id&gt;</code></p>
+<h3 id='path-parameters-2'>Path parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>account_id</code></td>
+<td>Account API id available from your Account Settings Page</td>
+</tr>
+<tr>
+<td><code>integration_id</code></td>
+<td>This is the ID of the integration from your Account Settings Page</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>Id of the Invoice to delete</td>
+</tr>
+</tbody></table>
 <h1 id='subscriptions'>Subscriptions</h1><h2 id='add-subscription'>Add Subscription</h2>
 <blockquote>
 <p>Example request</p>
@@ -997,6 +1091,46 @@ Adding a subscription <strong>does not</strong> create a corresponding order. Th
 <tr>
 <td><code>canceled_date</code></td>
 <td>If the subscription has been canceled, the date of that cancellation.</td>
+</tr>
+</tbody></table>
+<h2 id='delete-subscription'>Delete Subscription</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X DELETE https://import.segmetrics.io/api/v1/&lt;account_id&gt;/&lt;integration_id&gt;/subscription/&lt;id&gt;
+     -H <span class="s1">'Authorization: YOUR_API_KEY'</span>
+</code></pre>
+<blockquote>
+<p>Successful Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUBSCRIPTION_ID"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"subscription"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Permanently deletes a subscription from SegMetrics. This cannot be undone.</p>
+<h3 id='endpoint-2'>Endpoint</h3>
+<p><strong>DELETE</strong> <code>/v1/&lt;account_id&gt;/&lt;integration_id&gt;/subscription/&lt;id&gt;</code></p>
+<h3 id='path-parameters-2'>Path parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>account_id</code></td>
+<td>Account API id available from your Account Settings Page</td>
+</tr>
+<tr>
+<td><code>integration_id</code></td>
+<td>This is the ID of the integration from your Account Settings Page</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td>Id of the Subscription to delete</td>
 </tr>
 </tbody></table>
 <h1 id='ads'>Ads</h1><h2 id='record-ad-performance'>Record Ad Performance</h2>

@@ -113,3 +113,43 @@ Parameter | Description
 When updating `custom_fields`, data will be **appended** to the existing data.<br/>
 When updating `tags`, data will *replace* the existing data. Use `tags/add` to add tags to a contact. 
 </aside>
+
+Delete Contact
+----------------
+
+> Example request
+
+```shell
+curl -X DELETE https://import.segmetrics.io/api/v1/<account_id>/<integration_id>/contact/<contact_id_or_email>
+     -H 'Authorization: YOUR_API_KEY'
+```
+
+> Successful Response
+
+```json
+{
+    "id": "CONTACT_ID",
+    "status": "success",
+    "object": "contact",
+    "deleted": true
+}
+```
+
+Permanently deletes a contact from SegMetrics. This cannot be undone.<br/> 
+This will not delete any invoices or purchases from the contact in the same integration.
+
+### Endpoint
+
+**DELETE** `/v1/<account_id>/<integration_id>/contact/<contact_id_or_email>`
+
+### Path parameters
+
+Parameter | Description
+------------- | -------------
+`account_id` | Account API id available from your Account Settings Page
+`integration_id` | This is the ID of the integration from your Account Settings Page
+`contact_id_or_email` | Contact Id or Email Address of the contact to delete.
+
+<aside class="notice">
+If the delete contact request is made with an email address all contacts in the integration that use the same email address will be deleted.
+</aside>

@@ -83,3 +83,39 @@ Parameter | Description
 `name` | Product Name
 `product_id` | Product Id
 `amount` | Product Price in Cents
+
+
+Delete Invoice
+----------------
+
+> Example request
+
+```shell
+curl -X DELETE https://import.segmetrics.io/api/v1/<account_id>/<integration_id>/invoice/<id>
+     -H 'Authorization: YOUR_API_KEY'
+```
+
+> Successful Response
+
+```json
+{
+    "id": "INVOICE_ID",
+    "status": "success",
+    "object": "invoice",
+    "deleted": true
+}
+```
+
+Permanently deletes an invoice from SegMetrics. This cannot be undone.
+
+### Endpoint
+
+**DELETE** `/v1/<account_id>/<integration_id>/invoice/<id>`
+
+### Path parameters
+
+Parameter | Description
+------------- | -------------
+`account_id` | Account API id available from your Account Settings Page
+`integration_id` | This is the ID of the integration from your Account Settings Page
+`id` | Id of the Invoice to delete

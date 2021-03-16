@@ -63,3 +63,39 @@ Parameter | Description
 `trial_end_date` | If the subscription has a trial, the end of that trial.
 `end_date` | A date in the future at which the subscription will automatically get canceled
 `canceled_date` | If the subscription has been canceled, the date of that cancellation.
+
+
+Delete Subscription
+----------------
+
+> Example request
+
+```shell
+curl -X DELETE https://import.segmetrics.io/api/v1/<account_id>/<integration_id>/subscription/<id>
+     -H 'Authorization: YOUR_API_KEY'
+```
+
+> Successful Response
+
+```json
+{
+    "id": "SUBSCRIPTION_ID",
+    "status": "success",
+    "object": "subscription",
+    "deleted": true
+}
+```
+
+Permanently deletes a subscription from SegMetrics. This cannot be undone.
+
+### Endpoint
+
+**DELETE** `/v1/<account_id>/<integration_id>/subscription/<id>`
+
+### Path parameters
+
+Parameter | Description
+------------- | -------------
+`account_id` | Account API id available from your Account Settings Page
+`integration_id` | This is the ID of the integration from your Account Settings Page
+`id` | Id of the Subscription to delete

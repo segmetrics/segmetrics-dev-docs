@@ -18,6 +18,9 @@ includes_rest_api:
 #  - rest/integrations
 #  - rest/errors
 
+includes_reporting_api:
+  - reporting/reports
+
 includes_js_api:
   - js/getting_started
   - js/identify

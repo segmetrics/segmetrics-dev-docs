@@ -35,6 +35,16 @@ under the License.
   end
 %>
 
+<%
+  if current_page.data.includes_reporting_api
+    page_content += partial("includes/_reporting_section")
+
+    current_page.data.includes_reporting_api.each do |include|
+      page_content += partial("includes/#{include}")
+    end
+  end
+%>
+
 <!doctype html>
 <html>
   <head>
@@ -93,7 +103,9 @@ under the License.
         <% toc_data(page_content).each do |h1| %>
           <li>
             <% if h1[:id] == "rest-section" %>
-              <p class="toc-section">REST API</p>
+              <p class="toc-section">Import API</p>
+            <% elsif h1[:id] == "reporting-section" %>
+              <p class="toc-section">Reporting API</p>
             <% elsif h1[:id] == "js-section" %>
               <p class="toc-section">JS API</p>
             <% else %>

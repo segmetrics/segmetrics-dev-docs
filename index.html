@@ -1,5 +1,6 @@
 
 
+
 <!doctype html>
 <html>
   <head>
@@ -228,7 +229,7 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-              <p class="toc-section">REST API</p>
+              <p class="toc-section">Import API</p>
           </li>
           <li>
               <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting started">Getting started</a>
@@ -315,6 +316,17 @@
                 <ul class="toc-list-h2">
                     <li>
                       <a href="#connect-a-contact-to-the-current-web-session" class="toc-h2 toc-link" data-title="Connect a Contact to the Current Web Session">Connect a Contact to the Current Web Session</a>
+                    </li>
+                </ul>
+          </li>
+          <li>
+              <p class="toc-section">Reporting API</p>
+          </li>
+          <li>
+              <a href="#saved-reports" class="toc-h1 toc-link" data-title="Saved Reports">Saved Reports</a>
+                <ul class="toc-list-h2">
+                    <li>
+                      <a href="#retrieves-all-key-metrics-for-the-specified-report-and-time-period" class="toc-h2 toc-link" data-title="Retrieves all key metrics, for the specified report and time period.">Retrieves all key metrics, for the specified report and time period.</a>
                     </li>
                 </ul>
           </li>
@@ -1363,6 +1375,62 @@ either through a webhook or backend system like Zapier.</p>
 <p>In that case, you can make a standard HTTP request with the same information to connect a Session UID to a contact. </p>
 
 <p>The Session UID is always available in <code>_segs.data.uid</code></p>
+<h1 id='reporting-section'>Reporting Section</h1>
+<p>The Reporting API allows users to programmatically pull the metrics that SegMetrics generates.</p>
+<h1 id='saved-reports'>Saved Reports</h1><h2 id='retrieves-all-key-metrics-for-the-specified-report-and-time-period'>Retrieves all key metrics, for the specified report and time period.</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://api.segmetrics.io/&lt;account_id&gt;/report/&lt;report_type&gt;/&lt;report_id&gt;            
+     -H <span class="s1">'Authorization: YOUR_API_KEY'</span>
+     -H <span class="s1">'Content-Type: application/json'</span>
+     -d <span class="nv">start</span><span class="o">=</span>2020-01-01 <span class="se">\</span>
+     -d <span class="nv">end</span><span class="o">=</span>2020-11-24 <span class="se">\</span>
+     -d <span class="nv">scale</span><span class="o">=</span>day <span class="se">\</span>
+</code></pre>
+<p>Returns a saved report, or a new report of the set type.</p>
+<h3 id='endpoint'>Endpoint</h3>
+<p><strong>GET</strong> <code>/&lt;account_id&gt;/report/&lt;report_type&gt;/&lt;report_id&gt;</code></p>
+<h3 id='path-parameters'>Path parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>account_id</code></td>
+<td>Account API id available from your Account Settings Page</td>
+</tr>
+<tr>
+<td><code>report_type</code></td>
+<td>The report type that you would like to query. One of: <code>leads</code>, <code>revenue</code>, <code>ads</code> or <code>subscriptions</code></td>
+</tr>
+<tr>
+<td><code>report_id</code></td>
+<td><em>(Optional)</em> The ID of the saved report that you would like to return</td>
+</tr>
+</tbody></table>
+<h3 id='optional-parameters'>Optional parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>start</code></td>
+<td>The start date of the required period of data. Either a <a href="https://www.php.net/manual/en/datetime.formats.relative.php">Relative DateTime</a>, or an ISO-8601 formatted date, e.g. 2020-01-01</td>
+</tr>
+<tr>
+<td><code>end</code></td>
+<td>The end date of the required period of data. Either a <a href="https://www.php.net/manual/en/datetime.formats.relative.php">Relative DateTime</a>, or an ISO-8601 formatted date, e.g. 2020-01-01</td>
+</tr>
+<tr>
+<td><code>scale</code></td>
+<td>Breakdown for the graph metrics. One of <code>day</code> (default), <code>week</code>, or <code>month</code></td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">

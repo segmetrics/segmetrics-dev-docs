@@ -330,6 +330,14 @@
                     </li>
                 </ul>
           </li>
+          <li>
+              <a href="#contact-api" class="toc-h1 toc-link" data-title="Contact API">Contact API</a>
+                <ul class="toc-list-h2">
+                    <li>
+                      <a href="#retrieves-the-full-customer-journey-for-a-single-contact" class="toc-h2 toc-link" data-title="Retrieves the full customer journey for a single contact.">Retrieves the full customer journey for a single contact.</a>
+                    </li>
+                </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='https://segmetrics.io'>Get Started at SegMetrics.io</a></li>
@@ -1429,6 +1437,46 @@ either through a webhook or backend system like Zapier.</p>
 <tr>
 <td><code>scale</code></td>
 <td>Breakdown for the graph metrics. One of <code>day</code> (default), <code>week</code>, or <code>month</code></td>
+</tr>
+</tbody></table>
+<h1 id='contact-api'>Contact API</h1><h2 id='retrieves-the-full-customer-journey-for-a-single-contact'>Retrieves the full customer journey for a single contact.</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://api.segmetrics.io/&lt;account_id&gt;/contact/&lt;contact_id_or_email&gt;            
+     -H <span class="s1">'Authorization: YOUR_API_KEY'</span>
+     -H <span class="s1">'Content-Type: application/json'</span>
+     -d <span class="nv">extend</span><span class="o">=</span>tags,events
+</code></pre>
+<p>Returns the full customer journey of a single contact, either by email or contact_id.</p>
+<h3 id='endpoint'>Endpoint</h3>
+<p><strong>GET</strong> <code>/&lt;account_id&gt;/contact/&lt;contact_id_or_email&gt;</code></p>
+<h3 id='path-parameters'>Path parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>account_id</code></td>
+<td>Account API id available from your Account Settings Page</td>
+</tr>
+<tr>
+<td><code>contact_id_or_email</code></td>
+<td>The email address or external contact_id of the contact to return</td>
+</tr>
+</tbody></table>
+<h3 id='optional-parameters'>Optional parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>extend</code></td>
+<td>By default only the core contact data is returned. If you would like to include other data, you can do so by adding a CSV of the following options: <code>events</code>, <code>tags</code>, <code>orders</code>, <code>subscriptions</code>, <code>lists</code>. e.g. <code>events,tags</code></td>
 </tr>
 </tbody></table>
 

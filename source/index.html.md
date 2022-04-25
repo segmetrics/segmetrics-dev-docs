@@ -20,6 +20,7 @@ includes_rest_api:
 
 includes_reporting_api:
   - reporting/reports
+  - reporting/contacts
 
 includes_js_api:
   - js/getting_started

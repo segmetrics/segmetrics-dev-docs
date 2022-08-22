@@ -72,6 +72,9 @@ Parameter | Description
 Parameter | Description
 ------------- | -------------
 `is_refunded` | Invoice Refunded Flag
+`discount` | Invoice discount amount in Cents
+`tax` | Invoice tax amount in Cents
+`shipping` | Invoice shipping amount in Cents
 
 ### Item Parameters
 

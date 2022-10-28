@@ -1,7 +1,7 @@
 Saved Reports
 ===========
 
-Retrieves all key metrics, for the specified report and time period.
+Get Report Data
 ----------------
 
 > Example request
@@ -15,7 +15,7 @@ curl -X GET https://api.segmetrics.io/<account_id>/report/<report_type>/<report_
      -d scale=day \
 ```
 
-Returns a saved report, or a new report of the set type.
+Retrieves all key metrics, for the specified report and time period.
 
 ### Endpoint
 
@@ -37,10 +37,9 @@ Parameter | Description
 `end` | The end date of the required period of data. Either a [Relative DateTime](https://www.php.net/manual/en/datetime.formats.relative.php), or an ISO-8601 formatted date, e.g. 2020-01-01
 `scale` | Breakdown for the graph metrics. One of `day` (default), `week`, or `month`
 
-Saved Report Contact Journeys
-===========
 
-Retrieves the customer journey for all contacts in the specified report and time period.
+
+Customer Journey
 ----------------
 
 > Example request
@@ -161,7 +160,7 @@ curl -X GET https://api.segmetrics.io/<account_id>/report/<report_type>/<report_
 }
 ```
 
-Returns a collection of customer journeys from contacts contained in the requested report.
+Retrieves the customer journey for all contacts in the specified report and time period.
 
 ### Endpoint
 

@@ -1,7 +1,7 @@
 Contact API
 ===========
 
-Retrieves the full customer journey for a single contact.
+Get Contact
 ----------------
 
 > Example request

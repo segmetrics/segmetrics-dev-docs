@@ -326,15 +326,10 @@
               <a href="#saved-reports" class="toc-h1 toc-link" data-title="Saved Reports">Saved Reports</a>
                 <ul class="toc-list-h2">
                     <li>
-                      <a href="#retrieves-all-key-metrics-for-the-specified-report-and-time-period" class="toc-h2 toc-link" data-title="Retrieves all key metrics, for the specified report and time period.">Retrieves all key metrics, for the specified report and time period.</a>
+                      <a href="#get-report-data" class="toc-h2 toc-link" data-title="Get Report Data">Get Report Data</a>
                     </li>
-                </ul>
-          </li>
-          <li>
-              <a href="#saved-report-contact-journeys" class="toc-h1 toc-link" data-title="Saved Report Contact Journeys">Saved Report Contact Journeys</a>
-                <ul class="toc-list-h2">
                     <li>
-                      <a href="#retrieves-the-customer-journey-for-all-contacts-in-the-specified-report-and-time-period" class="toc-h2 toc-link" data-title="Retrieves the customer journey for all contacts in the specified report and time period.">Retrieves the customer journey for all contacts in the specified report and time period.</a>
+                      <a href="#customer-journey" class="toc-h2 toc-link" data-title="Customer Journey">Customer Journey</a>
                     </li>
                 </ul>
           </li>
@@ -342,7 +337,7 @@
               <a href="#contact-api" class="toc-h1 toc-link" data-title="Contact API">Contact API</a>
                 <ul class="toc-list-h2">
                     <li>
-                      <a href="#retrieves-the-full-customer-journey-for-a-single-contact" class="toc-h2 toc-link" data-title="Retrieves the full customer journey for a single contact.">Retrieves the full customer journey for a single contact.</a>
+                      <a href="#get-contact" class="toc-h2 toc-link" data-title="Get Contact">Get Contact</a>
                     </li>
                 </ul>
           </li>
@@ -1405,7 +1400,7 @@ either through a webhook or backend system like Zapier.</p>
 <p>The Session UID is always available in <code>_segs.data.uid</code></p>
 <h1 id='reporting-section'>Reporting Section</h1>
 <p>The Reporting API allows users to programmatically pull the metrics that SegMetrics generates.</p>
-<h1 id='saved-reports'>Saved Reports</h1><h2 id='retrieves-all-key-metrics-for-the-specified-report-and-time-period'>Retrieves all key metrics, for the specified report and time period.</h2>
+<h1 id='saved-reports'>Saved Reports</h1><h2 id='get-report-data'>Get Report Data</h2>
 <blockquote>
 <p>Example request</p>
 </blockquote>
@@ -1416,7 +1411,7 @@ either through a webhook or backend system like Zapier.</p>
      -d <span class="nv">end</span><span class="o">=</span>2020-11-24 <span class="se">\</span>
      -d <span class="nv">scale</span><span class="o">=</span>day <span class="se">\</span>
 </code></pre>
-<p>Returns a saved report, or a new report of the set type.</p>
+<p>Retrieves all key metrics, for the specified report and time period.</p>
 <h3 id='endpoint'>Endpoint</h3>
 <p><strong>GET</strong> <code>/&lt;account_id&gt;/report/&lt;report_type&gt;/&lt;report_id&gt;</code></p>
 <h3 id='path-parameters'>Path parameters</h3>
@@ -1459,7 +1454,7 @@ either through a webhook or backend system like Zapier.</p>
 <td>Breakdown for the graph metrics. One of <code>day</code> (default), <code>week</code>, or <code>month</code></td>
 </tr>
 </tbody></table>
-<h1 id='saved-report-contact-journeys'>Saved Report Contact Journeys</h1><h2 id='retrieves-the-customer-journey-for-all-contacts-in-the-specified-report-and-time-period'>Retrieves the customer journey for all contacts in the specified report and time period.</h2>
+<h2 id='customer-journey'>Customer Journey</h2>
 <blockquote>
 <p>Example request</p>
 </blockquote>
@@ -1576,7 +1571,7 @@ either through a webhook or backend system like Zapier.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Returns a collection of customer journeys from contacts contained in the requested report.</p>
+<p>Retrieves the customer journey for all contacts in the specified report and time period.</p>
 <h3 id='endpoint-2'>Endpoint</h3>
 <p><strong>GET</strong> <code>/&lt;account_id&gt;/report/&lt;report_type&gt;/&lt;report_id&gt;/contacts</code></p>
 <h3 id='path-parameters-2'>Path parameters</h3>
@@ -1627,7 +1622,7 @@ either through a webhook or backend system like Zapier.</p>
 <td>Result page to return</td>
 </tr>
 </tbody></table>
-<h1 id='contact-api'>Contact API</h1><h2 id='retrieves-the-full-customer-journey-for-a-single-contact'>Retrieves the full customer journey for a single contact.</h2>
+<h1 id='contact-api'>Contact API</h1><h2 id='get-contact'>Get Contact</h2>
 <blockquote>
 <p>Example request</p>
 </blockquote>

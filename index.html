@@ -331,6 +331,14 @@
                 </ul>
           </li>
           <li>
+              <a href="#saved-report-contact-journeys" class="toc-h1 toc-link" data-title="Saved Report Contact Journeys">Saved Report Contact Journeys</a>
+                <ul class="toc-list-h2">
+                    <li>
+                      <a href="#retrieves-the-customer-journey-for-all-contacts-in-the-specified-report-and-time-period" class="toc-h2 toc-link" data-title="Retrieves the customer journey for all contacts in the specified report and time period.">Retrieves the customer journey for all contacts in the specified report and time period.</a>
+                    </li>
+                </ul>
+          </li>
+          <li>
               <a href="#contact-api" class="toc-h1 toc-link" data-title="Contact API">Contact API</a>
                 <ul class="toc-list-h2">
                     <li>
@@ -1451,6 +1459,174 @@ either through a webhook or backend system like Zapier.</p>
 <td>Breakdown for the graph metrics. One of <code>day</code> (default), <code>week</code>, or <code>month</code></td>
 </tr>
 </tbody></table>
+<h1 id='saved-report-contact-journeys'>Saved Report Contact Journeys</h1><h2 id='retrieves-the-customer-journey-for-all-contacts-in-the-specified-report-and-time-period'>Retrieves the customer journey for all contacts in the specified report and time period.</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://api.segmetrics.io/&lt;account_id&gt;/report/&lt;report_type&gt;/&lt;report_id&gt;/contacts            
+     -H <span class="s1">'Authorization: YOUR_API_KEY'</span>
+     -H <span class="s1">'Content-Type: application/json'</span>
+     -d <span class="nv">start</span><span class="o">=</span>2020-01-01 <span class="se">\</span>
+     -d <span class="nv">end</span><span class="o">=</span>2020-11-24 <span class="se">\</span>
+     -d <span class="nv">extend</span><span class="o">=</span>tags,events
+</code></pre>
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"contact_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1004"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Linda"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dare"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linda.dare@example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"date_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-18T19:07:50+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"last_updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-31T00:00:00+00:00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"City"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mortimerville"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"State"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UT"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Phone1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"780.555.3533"</span><span class="p">,</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"contact_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1012"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"is_paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"is_refunded"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"total_tax"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"total_shipping"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"total_discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"total_paid"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"date_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-12T20:32:11+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"line_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"contact_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1012"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"order_item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"894689"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"subscription_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"product_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Launching a Marketing Plan"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"order_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"is_paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"is_refunded"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"total_paid"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"total_due"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"date_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-12T20:32:11+00:00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"imported_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-12T20:32:11+00:00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"last_imported_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-31T00:00:00+00:00"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"page_view"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"contact_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1004"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"date_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-18T19:07:50+00:00"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ip_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3159:c782:bf13:9cdc:6b0d:c76b:d20a:5167"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BV"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"port"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"North Benton"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"39433"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.490988"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-174.138608"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com./top-page"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"full_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com./top-page?utm_campaign=Retargeting&amp;utm_medium=cpc&amp;utm_source=fb&amp;utm_term=WARM+Retarget&amp;utm_content=RT+-+Testimonial+-+J&amp;ad_id=559675250&amp;fbclid=1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"referrer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lifehacker.com"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"host"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example.com"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/top-page"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"utm_campaign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Retargeting"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"utm_medium"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cpc"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"utm_source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"utm_term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WARM Retarget"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"utm_content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RT - Testimonial - J"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"ad_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"559675250"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"fbclid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"sega_prod"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paid"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"utm_source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"utm_medium"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cpc"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"utm_campaign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Retargeting"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"utm_term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WARM Retarget"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"utm_content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RT - Testimonial - J"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ad_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"559675250"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w"> </span><span class="err">...</span><span class="w">
+  </span><span class="p">],</span><span class="w">  
+  </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"current_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"from"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">    
+    </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.segmetrics.io/example/report/ads/contacts"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"per_page"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"to"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">85</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Returns a collection of customer journeys from contacts contained in the requested report.</p>
+<h3 id='endpoint-2'>Endpoint</h3>
+<p><strong>GET</strong> <code>/&lt;account_id&gt;/report/&lt;report_type&gt;/&lt;report_id&gt;/contacts</code></p>
+<h3 id='path-parameters-2'>Path parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>account_id</code></td>
+<td>Account API id available from your Account Settings Page</td>
+</tr>
+<tr>
+<td><code>report_type</code></td>
+<td>The report type that you would like to query. One of: <code>leads</code>, <code>revenue</code>, <code>ads</code> or <code>subscriptions</code></td>
+</tr>
+<tr>
+<td><code>report_id</code></td>
+<td><em>(Optional)</em> The ID of the saved report that you would like to return</td>
+</tr>
+</tbody></table>
+<h3 id='optional-parameters-2'>Optional parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>start</code></td>
+<td>The start date of the required period of data. Either a <a href="https://www.php.net/manual/en/datetime.formats.relative.php">Relative DateTime</a>, or an ISO-8601 formatted date, e.g. 2020-01-01</td>
+</tr>
+<tr>
+<td><code>end</code></td>
+<td>The end date of the required period of data. Either a <a href="https://www.php.net/manual/en/datetime.formats.relative.php">Relative DateTime</a>, or an ISO-8601 formatted date, e.g. 2020-01-01</td>
+</tr>
+<tr>
+<td><code>extend</code></td>
+<td>By default only the core contact data is returned. If you would like to include other data, you can do so by adding a CSV of the following options: <code>events</code>, <code>tags</code>, <code>orders</code>, <code>subscriptions</code>, <code>lists</code>. e.g. <code>events,tags</code></td>
+</tr>
+<tr>
+<td><code>limit</code></td>
+<td>Number of records to return in a page, 1 - 100 (Default 20)</td>
+</tr>
+<tr>
+<td><code>page</code></td>
+<td>Result page to return</td>
+</tr>
+</tbody></table>
 <h1 id='contact-api'>Contact API</h1><h2 id='retrieves-the-full-customer-journey-for-a-single-contact'>Retrieves the full customer journey for a single contact.</h2>
 <blockquote>
 <p>Example request</p>
@@ -1460,6 +1636,101 @@ either through a webhook or backend system like Zapier.</p>
      -H <span class="s1">'Content-Type: application/json'</span>
      -d <span class="nv">extend</span><span class="o">=</span>tags,events
 </code></pre>
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"contact_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1004"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Linda"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dare"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"linda.dare@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"date_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-18T19:07:50+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last_updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-31T00:00:00+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"custom_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"City"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mortimerville"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"State"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Phone1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"780.555.3533"</span><span class="p">,</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"orders"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"contact_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1012"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"is_paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"is_refunded"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subtotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_tax"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_shipping"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_discount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_paid"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-12T20:32:11+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"line_items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"contact_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1012"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"order_item_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"894689"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"subscription_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"product_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Launching a Marketing Plan"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"order_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"product"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"is_paid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"is_refunded"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"total_paid"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"total_due"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"date_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-12T20:32:11+00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"imported_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-12T20:32:11+00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"last_imported_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-31T00:00:00+00:00"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"events"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"page_view"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"contact_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1004"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"uid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"fingerprint"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-18T19:07:50+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ip_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3159:c782:bf13:9cdc:6b0d:c76b:d20a:5167"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"country_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BV"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"port"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"North Benton"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"39433"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.490988"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-174.138608"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com./top-page"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"full_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com./top-page?utm_campaign=Retargeting&amp;utm_medium=cpc&amp;utm_source=fb&amp;utm_term=WARM+Retarget&amp;utm_content=RT+-+Testimonial+-+J&amp;ad_id=559675250&amp;fbclid=1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"referrer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lifehacker.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"host"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/top-page"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"args"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"utm_campaign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Retargeting"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"utm_medium"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cpc"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"utm_source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"utm_term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WARM Retarget"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"utm_content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RT - Testimonial - J"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"ad_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"559675250"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"fbclid"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"sega_prod"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paid"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"utm_source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fb"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"utm_medium"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cpc"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"utm_campaign"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Retargeting"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"utm_term"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WARM Retarget"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"utm_content"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RT - Testimonial - J"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ad_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"559675250"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <p>Returns the full customer journey of a single contact, either by email or contact_id.</p>
 <h3 id='endpoint'>Endpoint</h3>
 <p><strong>GET</strong> <code>/&lt;account_id&gt;/contact/&lt;contact_id_or_email&gt;</code></p>

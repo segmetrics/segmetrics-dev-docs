@@ -25,6 +25,7 @@ curl -X POST https://import.segmetrics.io/api/v1/<account_id>/<integration_id>/s
 Adds a subscription to the existing contact. If the subscription id already exist, it will be updated.
 <aside class="warning">
 Adding a subscription **does not** create a corresponding order. That must be done separately.
+If the specified product does not exist in SegMetrics, one will be created.
 </aside>
 
 ### Endpoint
@@ -50,6 +51,7 @@ Parameter | Description
 `email` | Contact's Email (Required if no contact id)
 `amount` | Subscription Total in Cents
 `product_id` | Product Id that the Subscription applies to
+`name` | Product Name that the Subscription applies to (Optional)
 `start_date` | DateTime that the Subscription started
 `last_bill_date` | DateTime that the Subscription was last billed
 `billing_cycle` | One of `year`, `month`, `week` or `day` The frequency with which a subscription should be billed.

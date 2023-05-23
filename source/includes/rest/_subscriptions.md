@@ -51,7 +51,6 @@ Parameter | Description
 `email` | Contact's Email (Required if no contact id)
 `amount` | Subscription Total in Cents
 `product_id` | Product Id that the Subscription applies to
-`name` | Product Name that the Subscription applies to (Optional)
 `start_date` | DateTime that the Subscription started
 `last_bill_date` | DateTime that the Subscription was last billed
 `billing_cycle` | One of `year`, `month`, `week` or `day` The frequency with which a subscription should be billed.
@@ -61,6 +60,7 @@ Parameter | Description
 
 Parameter | Description
 ------------- | -------------
+`name` | Product Name that the Subscription applies to
 `quantity` | The quantity of the plan to which the customer is subscribed. Defaults to 1
 `trial_end_date` | If the subscription has a trial, the end of that trial.
 `end_date` | A date in the future at which the subscription will automatically get canceled

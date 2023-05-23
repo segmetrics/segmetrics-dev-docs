@@ -290,6 +290,14 @@
                 </ul>
           </li>
           <li>
+              <a href="#products" class="toc-h1 toc-link" data-title="Products">Products</a>
+                <ul class="toc-list-h2">
+                    <li>
+                      <a href="#add-product" class="toc-h2 toc-link" data-title="Add Product">Add Product</a>
+                    </li>
+                </ul>
+          </li>
+          <li>
               <a href="#ads" class="toc-h1 toc-link" data-title="Ads">Ads</a>
                 <ul class="toc-list-h2">
                     <li>
@@ -1039,6 +1047,7 @@ If the product does not exist in SegMetrics, one will be created.</p>
 <p>Adds a subscription to the existing contact. If the subscription id already exist, it will be updated.
 <aside class="warning">
 Adding a subscription <strong>does not</strong> create a corresponding order. That must be done separately.
+If the specified product does not exist in SegMetrics, one will be created.
 </aside></p>
 <h3 id='endpoint'>Endpoint</h3>
 <p><strong>POST</strong> <code>/v1/&lt;account_id&gt;/&lt;integration_id&gt;/subscription</code></p>
@@ -1086,6 +1095,10 @@ Adding a subscription <strong>does not</strong> create a corresponding order. Th
 <tr>
 <td><code>product_id</code></td>
 <td>Product Id that the Subscription applies to</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Product Name that the Subscription applies to (Optional)</td>
 </tr>
 <tr>
 <td><code>start_date</code></td>
@@ -1166,6 +1179,59 @@ Adding a subscription <strong>does not</strong> create a corresponding order. Th
 <tr>
 <td><code>id</code></td>
 <td>Id of the Subscription to delete</td>
+</tr>
+</tbody></table>
+<h1 id='products'>Products</h1><h2 id='add-product'>Add Product</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://import.segmetrics.io/api/v1/&lt;account_id&gt;/&lt;integration_id&gt;/tags/add <span class="se">\</span>
+     -H <span class="s1">'Authorization: YOUR_API_KEY'</span> <span class="se">\</span>
+     -H <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+     -d <span class="s1">'{
+           "contact_id": 249,
+           "tags": [ 3, 45, 8 ]
+         }'</span>
+</code></pre>
+<p>Adds a product to the specified SegMetrics integration.</p>
+
+<aside class="notice">
+If the `id` already exists, the existing product will be updated.
+</aside>
+<h3 id='endpoint'>Endpoint</h3>
+<p><strong>POST</strong> <code>/v1/&lt;account_id&gt;/&lt;integration_id&gt;/product</code></p>
+<h3 id='path-parameters'>Path parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>account_id</code></td>
+<td>Account API id available from your Account Settings Page</td>
+</tr>
+<tr>
+<td><code>integration_id</code></td>
+<td>This is the ID of the integration from your Account Settings Page</td>
+</tr>
+</tbody></table>
+<h3 id='request-body-schema'>Request Body Schema</h3>
+<p><code>application/json</code></p>
+<h3 id='required-parameters'>Required parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>Product Id</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>Name of the Product</td>
 </tr>
 </tbody></table>
 <h1 id='ads'>Ads</h1><h2 id='record-ad-performance'>Record Ad Performance</h2>

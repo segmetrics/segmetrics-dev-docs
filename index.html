@@ -939,6 +939,12 @@ If the `id` already exists, the existing invoice will be updated.
 <td>Array of Invoice Items</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+When sending a `contact_id` with the invoice, that contact <strong>MUST</strong> already exist in SegMetrics.<br/>
+If the contact may or may not exist already, <strong>ONLY</strong> send the email, and SegMetrics will automatically
+match the contact on the next data sync.
+</aside>
 <h3 id='optional-parameters'>Optional parameters</h3>
 <table><thead>
 <tr>
@@ -1113,6 +1119,12 @@ If the specified product does not exist in SegMetrics, one will be created.
 <td>The number of intervals (specified in the <code>billing_cycle</code> property) between subscription billings. For example, <code>billing_cycle=month</code> and <code>frequency=3</code> bills every 3 months.</td>
 </tr>
 </tbody></table>
+
+<aside class="notice">
+When sending a `contact_id` with the subscription, that contact <strong>MUST</strong> already exist in SegMetrics.<br/>
+If the contact may or may not exist already, <strong>ONLY</strong> send the email, and SegMetrics will automatically
+match the contact on the next data sync.
+</aside>
 <h3 id='optional-parameters'>Optional parameters</h3>
 <table><thead>
 <tr>

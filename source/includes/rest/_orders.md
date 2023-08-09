@@ -66,6 +66,11 @@ Parameter | Description
 `date_created` | Invoice Date
 `items` | Array of Invoice Items
 
+<aside class="notice">
+When sending a `contact_id` with the invoice, that contact <strong>MUST</strong> already exist in SegMetrics.<br/>
+If the contact may or may not exist already, <strong>ONLY</strong> send the email, and SegMetrics will automatically
+match the contact on the next data sync.
+</aside>
 
 ### Optional parameters
 

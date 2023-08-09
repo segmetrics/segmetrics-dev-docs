@@ -56,6 +56,12 @@ Parameter | Description
 `billing_cycle` | One of `year`, `month`, `week` or `day` The frequency with which a subscription should be billed.
 `frequency` |  The number of intervals (specified in the `billing_cycle` property) between subscription billings. For example, `billing_cycle=month` and `frequency=3` bills every 3 months.
 
+<aside class="notice">
+When sending a `contact_id` with the subscription, that contact <strong>MUST</strong> already exist in SegMetrics.<br/>
+If the contact may or may not exist already, <strong>ONLY</strong> send the email, and SegMetrics will automatically
+match the contact on the next data sync.
+</aside>
+
 ### Optional parameters
 
 Parameter | Description

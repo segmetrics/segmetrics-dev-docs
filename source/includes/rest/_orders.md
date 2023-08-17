@@ -91,6 +91,7 @@ Parameter | Description
 `name` | Product Name
 `product_id` | Product Id
 `amount` | Product Price in Cents
+`subscription_id` | (optional) The ID of the Subscription that the purchase is connected to 
 
 
 Delete Invoice

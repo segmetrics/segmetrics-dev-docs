@@ -15,6 +15,96 @@ curl -X GET https://api.segmetrics.io/<account_id>/report/<report_type>/<report_
      -d scale=day \
 ```
 
+> Example Response
+> 
+```JSON
+{
+    "report": {
+        "name": "New Lead Report",
+        "type": "leads",
+        "date_range": {
+            "start": "2021-11-01",
+            "end": "2021-11-30",
+            "duration": null,
+            "scale": "day",
+            "start_date": "2021-11-01",
+            "end_date": "2021-11-30",
+            "name": ""
+        }
+    },
+    "kpis": [
+        {
+            "name": "Leads",
+            "key": "leads",
+            "value": 42,
+            "type": "NUMBER",
+            "aggregation": "SUM"
+        },
+        {
+            "name": "Customers",
+            "key": "numOfCustomers",
+            "value": 5,
+            "type": "NUMBER",
+            "aggregation": "SUM"
+        },
+        ...
+    ],
+    "graph": {
+        "labels": [
+            "2021-11-01",
+            "2021-11-02",
+            ...
+        ],
+        "datasets": [
+            {
+                "label": "Leads",
+                "data": [
+                    0,
+                    3,
+                    ...
+                ]
+            }
+        ]
+    },
+    "table": {
+        "fields": [
+            {
+                "name": "Channel",
+                "key": "channel",
+                "type": "STRING",
+                "aggregation": null
+            },
+            {
+                "name": "Leads",
+                "key": "leads",
+                "type": "NUMBER",
+                "aggregation": "SUM"
+            },
+            ...
+        ],
+        "rows": [
+            {
+                "channel": "social",
+                "leads": 2,
+                "numOfCustomers": 0,
+                "conversionRate": 0,
+                "revenue": 0,
+                "leadValue": 0
+            },
+            {
+                "channel": "paid",
+                "leads": 33,
+                "numOfCustomers": 5,
+                "conversionRate": 15.1515,
+                "revenue": 2900,
+                "leadValue": 87.878788
+            },
+            ...
+        ]
+    }
+}
+```
+
 Retrieves all key metrics, for the specified report and time period.
 
 ### Endpoint

@@ -88,6 +88,7 @@ If the product does not exist in SegMetrics, one will be created.
 
 Parameter | Description
 ------------- | -------------
+`id` | (optional) Line Item Id (defaults to Order Id - Item number)
 `name` | Product Name
 `product_id` | Product Id
 `amount` | Product Price in Cents

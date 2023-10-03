@@ -162,6 +162,15 @@ curl -X GET https://api.segmetrics.io/<account_id>/report/<report_type>/<report_
         "Phone1": "780.555.3533",
         ...
       },
+      "tags": [
+        {
+          "tag_id": "115",
+          "name": "marketing-blueprint",
+          "contact_id": "1060",
+          "date_created": "2021-11-18T05:07:44+00:00"
+        },
+        ...
+      ],
       "orders": [
         {
           "order_id": "26",

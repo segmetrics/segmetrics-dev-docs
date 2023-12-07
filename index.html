@@ -454,7 +454,8 @@ Try again after a short period, and if you continue to encounter an error, pleas
            ],
            "custom_fields": {
                 "shirt_size": "Medium",
-                "Awesome Sauce": "Applesauce2"
+                "Awesome Sauce": "Applesauce2",
+                "field_to_remove": null
            }
          }'</span>
 </code></pre>
@@ -587,6 +588,10 @@ When passing a contact_id, if the email address already exists, that contact_id 
 
 <aside class="notice">
 When updating `custom_fields`, data will be **appended** to the existing data.<br/>
+Set the value to `null` in order to remove the custom field. (See example)
+</aside>
+
+<aside class="notice">
 When updating `tags`, data will *replace* the existing data. Use `tags/add` to add tags to a contact. 
 </aside>
 <h2 id='delete-contact'>Delete Contact</h2>

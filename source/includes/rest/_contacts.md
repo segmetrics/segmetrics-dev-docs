@@ -48,7 +48,8 @@ curl -X POST https://import.segmetrics.io/api/v1/<account_id>/<integration_id>/c
            ],
            "custom_fields": {
                 "shirt_size": "Medium",
-                "Awesome Sauce": "Applesauce2"
+                "Awesome Sauce": "Applesauce2",
+                "field_to_remove": null
            }
          }'
 ```
@@ -109,8 +110,14 @@ Parameter | Description
 `geo_lat` | Geographic Latitude
 `geo_lon` | Geographic Longitude
 
+
 <aside class="notice">
 When updating `custom_fields`, data will be **appended** to the existing data.<br/>
+Set the value to `null` in order to remove the custom field. (See example)
+</aside>
+
+
+<aside class="notice">
 When updating `tags`, data will *replace* the existing data. Use `tags/add` to add tags to a contact. 
 </aside>
 

@@ -135,4 +135,4 @@ Parameter | Description
 
 Parameter | Description
 ------------- | -------------
-`extend` | By default only the core contact data is returned. If you would like to include other data, you can do so by adding a CSV of the following options: `events`, `tags`, `orders`, `subscriptions`, `lists`. e.g. `events,tags`
+`extend` | By default only the core contact data is returned. If you would like to include other data, you can do so by adding a CSV of the following options: `events`, `tags`, `orders`, `subscriptions`, `lists`, `companies`. e.g. `events,tags`

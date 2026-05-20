@@ -21,6 +21,7 @@ includes_rest_api:
 
 includes_reporting_api:
   - reporting/reports
+  - reporting/query
   - reporting/contacts
 
 includes_js_api:

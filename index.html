@@ -342,6 +342,14 @@
                 </ul>
           </li>
           <li>
+              <a href="#ad-hoc-report-query" class="toc-h1 toc-link" data-title="Ad-hoc Report Query">Ad-hoc Report Query</a>
+                <ul class="toc-list-h2">
+                    <li>
+                      <a href="#run-a-report-query" class="toc-h2 toc-link" data-title="Run a Report Query">Run a Report Query</a>
+                    </li>
+                </ul>
+          </li>
+          <li>
               <a href="#contact-api" class="toc-h1 toc-link" data-title="Contact API">Contact API</a>
                 <ul class="toc-list-h2">
                     <li>
@@ -1460,12 +1468,22 @@ Each SegMetrics account has a unique snippet that can be found under <a href="ht
 <p>API requests are executed asynchronously, so you may safely place then anywhere on the page (even above the SegMetrics snippet).</p>
 <h1 id='identifying-visitors'>Identifying Visitors</h1><h2 id='connect-a-contact-to-the-current-web-session'>Connect a Contact to the Current Web Session</h2>
 <blockquote>
-<p>Example identify request</p>
+<p>Identify by email (string form)</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="nx">_segq</span><span class="p">.</span><span class="nx">push</span><span class="p">([</span><span class="s2">"identify"</span><span class="p">,</span> <span class="s2">"john@example.com"</span><span class="p">]);</span>
 </code></pre>
+<blockquote>
+<p>Identify by contact id, email, or both (object form)</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">_segq</span><span class="p">.</span><span class="nx">push</span><span class="p">([</span><span class="s2">"identify"</span><span class="p">,</span> <span class="p">{</span> <span class="na">email</span><span class="p">:</span> <span class="s2">"john@example.com"</span><span class="p">,</span> <span class="na">contact_id</span><span class="p">:</span> <span class="s2">"abc123"</span> <span class="p">}]);</span>
+
+<span class="c1">// Contact id only — no email required</span>
+<span class="nx">_segq</span><span class="p">.</span><span class="nx">push</span><span class="p">([</span><span class="s2">"identify"</span><span class="p">,</span> <span class="p">{</span> <span class="na">contact_id</span><span class="p">:</span> <span class="s2">"abc123"</span> <span class="p">}]);</span>
+</code></pre>
 <p>The <code>identify</code> command lets you tie a contact in your email marketing platform to their actions on the website. 
-It includes an email address, and automatically connects to the current session.</p>
+You can identify a contact by their email address, by the <code>contact_id</code> from an external system, or both. The call automatically connects to the current session.</p>
+
+<p>If neither a valid email nor a <code>contact_id</code> is supplied, the call is dropped (fail-closed).</p>
 
 <aside class="notice">
 In most cases SegMetrics will automatically identify a contact when they enter their email address on your optin forms,
@@ -1476,19 +1494,60 @@ automatically identifying the user.
 </aside>
 <h3 id='tracking-without-the-javascript-api'>Tracking Without the JavaScript API</h3>
 <blockquote>
-<p>Manually Identifying a User</p>
+<p>Manually Identifying a User by Email</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl -X GET -G https://track.segmetrics.io/identify     
-     -d <span class="nv">account_id</span><span class="o">=</span>YOUR_ACCOUNT_ID
-     -d <span class="nv">seg_uid</span><span class="o">=</span>SESSION_UID
-     -d <span class="nv">email</span><span class="o">=</span>john@example.com     
+<pre class="highlight shell tab-shell"><code>curl -X GET -G https://track.segmetrics.io/identify <span class="se">\</span>
+     -d <span class="nv">a</span><span class="o">=</span>YOUR_ACCOUNT_ID <span class="se">\</span>
+     -d <span class="nv">uid</span><span class="o">=</span>SESSION_UID <span class="se">\</span>
+     -d <span class="nv">e</span><span class="o">=</span>john@example.com
+</code></pre>
+<blockquote>
+<p>Manually Identifying a User by Contact ID</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X GET -G https://track.segmetrics.io/identify <span class="se">\</span>
+     -d <span class="nv">a</span><span class="o">=</span>YOUR_ACCOUNT_ID <span class="se">\</span>
+     -d <span class="nv">uid</span><span class="o">=</span>SESSION_UID <span class="se">\</span>
+     -d <span class="nv">cid</span><span class="o">=</span>abc123
+</code></pre>
+<blockquote>
+<p>Identifying a User by Both Email and Contact ID</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X GET -G https://track.segmetrics.io/identify <span class="se">\</span>
+     -d <span class="nv">a</span><span class="o">=</span>YOUR_ACCOUNT_ID <span class="se">\</span>
+     -d <span class="nv">uid</span><span class="o">=</span>SESSION_UID <span class="se">\</span>
+     -d <span class="nv">e</span><span class="o">=</span>john@example.com <span class="se">\</span>
+     -d <span class="nv">cid</span><span class="o">=</span>abc123
 </code></pre>
 <p>In some cases you may want to manually identify a contact when you don&#39;t have access to the JavaScript API,
 either through a webhook or backend system like Zapier.</p>
 
 <p>In that case, you can make a standard HTTP request with the same information to connect a Session UID to a contact. </p>
 
-<p>The Session UID is always available in <code>_segs.data.uid</code></p>
+<p>The Session UID is always available in <code>_segs.data.uid</code>. If you do not have a Session UID, one will be generated automatically from the <code>cid</code> or <code>e</code> value you supply.</p>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>a</code></td>
+<td>Account API id available from your Account Settings Page. <strong>Required.</strong></td>
+</tr>
+<tr>
+<td><code>uid</code></td>
+<td>Session UID for the current web session (available in <code>_segs.data.uid</code>). Optional — if omitted, a UID is derived from <code>cid</code> or <code>e</code>.</td>
+</tr>
+<tr>
+<td><code>e</code></td>
+<td>Contact email address. Either <code>e</code> or <code>cid</code> must be supplied — both may be supplied together.</td>
+</tr>
+<tr>
+<td><code>cid</code></td>
+<td>Opaque contact id from an external system. Either <code>e</code> or <code>cid</code> must be supplied — both may be supplied together.</td>
+</tr>
+</tbody></table>
 <h1 id='reporting-section'>Reporting Section</h1>
 <p>The Reporting API allows users to programmatically pull the metrics that SegMetrics generates.</p>
 <h1 id='saved-reports'>Saved Reports</h1><h2 id='get-report-data'>Get Report Data</h2>
@@ -1811,6 +1870,136 @@ either through a webhook or backend system like Zapier.</p>
 <td>Result page to return</td>
 </tr>
 </tbody></table>
+<h1 id='ad-hoc-report-query'>Ad-hoc Report Query</h1>
+<p>Run any report definition against the SegMetrics data layer. This endpoint accepts the same <code>reportQuery</code> payload that the in-app Data Explorer builds, so anything you can configure visually can also be fetched via the API.</p>
+
+<aside class="notice">
+The easiest way to get a valid payload is to open any report in the SegMetrics app, open the report-actions menu, and choose <strong>Access from API</strong>. The app generates a ready-to-run <code>curl</code> command — pre-filled with your account id, API key, and the exact JSON body for the current explorer state — pointed at this endpoint. We recommend starting there for any first-time integration, then editing the resulting payload to suit your needs.
+</aside>
+<h2 id='run-a-report-query'>Run a Report Query</h2>
+<blockquote>
+<p>Example request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST --location <span class="s2">"https://api.segmetrics.io/v2/&lt;account_id&gt;/data/query"</span> <span class="se">\</span>
+     -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+     -H <span class="s2">"Authorization: YOUR_API_KEY"</span> <span class="se">\</span>
+     -d <span class="s1">'{
+        "type": "leads",
+        "dimensions": ["clicks.channel"],
+        "metrics": ["leads", "revenue"],
+        "date_range": {
+            "start": "-30 day",
+            "end": "now",
+            "scale": "day"
+        },
+        "filters": [],
+        "options": {
+            "attribution_model": "last_touch",
+            "include_source": true
+        }
+     }'</span>
+</code></pre>
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"leads"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Channel"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"channel"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"STRING"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"aggregation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Leads"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"leads"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NUMBER"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"aggregation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUM"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Revenue"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"revenue"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CURRENCY"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"aggregation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUM"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"rows"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">[</span><span class="s2">"paid"</span><span class="p">,</span><span class="w"> </span><span class="mi">33</span><span class="p">,</span><span class="w"> </span><span class="mi">2900</span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="s2">"social"</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">],</span><span class="w">
+        </span><span class="p">[</span><span class="s2">"direct"</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">450</span><span class="p">]</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"totals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="mi">3350</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"date_range"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-04-20"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2026-05-20"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"scale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"day"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"comparison"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"v"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Executes an ad-hoc report query and returns the raw result set (<code>fields</code> + <code>rows</code>), the same payload the Data Explorer renders into a chart or table.</p>
+<h3 id='endpoint'>Endpoint</h3>
+<p><strong>POST</strong> <code>/v2/&lt;account_id&gt;/data/query</code></p>
+
+<aside class="warning">
+Unlike the other Reporting endpoints, this endpoint is served under the <code>/v2/</code> prefix.
+</aside>
+<h3 id='path-parameters'>Path parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>account_id</code></td>
+<td>Account API id available from your Account Settings Page</td>
+</tr>
+</tbody></table>
+<h3 id='body-parameters'>Body parameters</h3>
+<p>Send the body as <code>application/json</code>. Most fields are arrays/objects mirroring what the in-app Data Explorer builds — refer to the <strong>Access from API</strong> modal for a copy of the exact shape currently in use.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>type</code></td>
+<td>Report type slug. One of <code>leads</code>, <code>revenue</code>, <code>ads</code>, <code>subscriptions</code>, <code>funnel</code>, etc.</td>
+</tr>
+<tr>
+<td><code>dimensions</code></td>
+<td>Array of dimension slugs to group by, e.g. <code>[&quot;clicks.channel&quot;]</code></td>
+</tr>
+<tr>
+<td><code>metrics</code></td>
+<td>Array of metric slugs to return, e.g. <code>[&quot;leads&quot;, &quot;revenue&quot;]</code></td>
+</tr>
+<tr>
+<td><code>date_range</code></td>
+<td>Object: <code>{ &quot;start&quot;, &quot;end&quot;, &quot;scale&quot; }</code>. <code>start</code> / <code>end</code> accept <a href="https://www.php.net/manual/en/datetime.formats.relative.php">Relative DateTime</a> strings (e.g. <code>-30 day</code>) or ISO-8601 dates. <code>scale</code> is one of <code>day</code>, <code>week</code>, <code>month</code>.</td>
+</tr>
+<tr>
+<td><code>filters</code></td>
+<td>Array of filter objects scoping the report.</td>
+</tr>
+<tr>
+<td><code>steps</code></td>
+<td>Array of funnel-step definitions. <em>Funnel reports only.</em></td>
+</tr>
+<tr>
+<td><code>options</code></td>
+<td>Object of report-wide options. Common keys: <code>attribution_model</code>, <code>include_source</code>.</td>
+</tr>
+<tr>
+<td><code>compare</code></td>
+<td><em>(Optional)</em> Comparison period — same shape as <code>date_range</code>. When present, returns a <code>comparison</code> block in the response.</td>
+</tr>
+</tbody></table>
 <h1 id='contact-api'>Contact API</h1><h2 id='get-contact'>Get Contact</h2>
 <blockquote>
 <p>Example request</p>
@@ -1952,7 +2141,7 @@ either through a webhook or backend system like Zapier.</p>
 </thead><tbody>
 <tr>
 <td><code>extend</code></td>
-<td>By default only the core contact data is returned. If you would like to include other data, you can do so by adding a CSV of the following options: <code>events</code>, <code>tags</code>, <code>orders</code>, <code>subscriptions</code>, <code>lists</code>. e.g. <code>events,tags</code></td>
+<td>By default only the core contact data is returned. If you would like to include other data, you can do so by adding a CSV of the following options: <code>events</code>, <code>tags</code>, <code>orders</code>, <code>subscriptions</code>, <code>lists</code>, <code>companies</code>. e.g. <code>events,tags</code></td>
 </tr>
 </tbody></table>
 
